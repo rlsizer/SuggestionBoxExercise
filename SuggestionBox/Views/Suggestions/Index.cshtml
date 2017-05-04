@@ -4,12 +4,29 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Suggestions</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <div class="caption text-center">
+                    <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                    <p>@Html.DisplayFor(modelItem => item.Comment)</p>
+                    <p>@Html.ActionLink("View Details", "Details", new { id = item.ID }, new { role="button", @class = "btn btn-primary" })</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -36,4 +53,4 @@
     </tr>
 }
 
-</table>
+</table>*@
